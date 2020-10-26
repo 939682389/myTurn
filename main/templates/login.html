@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="App Loction Form,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script src="https://students.demoo.com.cn/htmlstatic/plug/jquery.form.min.js"></script>
+<script type="text/javascript">
+function formSubmit()
+  {
+    console.log("测试")
+      var name = document.getElementById("name").value;//得到标签对象
+        var id = document.getElementById("id").value;//得到标签对象
+          var key = document.getElementById("key").value;//得到标签对象
+            var type = document.getElementById("type").checked;//得到标签对象
+
+        console.log(name);
+        console.log(type);
+        if(document.getElementById("type").checked)
+          document.getElementById('form').action='in';
+        else
+          document.getElementById('form').action='out';
+
+  document.getElementById("form").submit()
+
+  }
+</script>
+<!--webfonts-->
+<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+</head>
+<body>
+	<h1>App Location Form</h1>
+		<div class="app-location">
+			<h2>Welcome to Locaticus</h2>
+			<div class="line"><span></span></div>
+			<div class="location"><img src="images/location.png" class="img-responsive" alt="" /></div>
+			<form id="form"  method="get">
+				<input id="name" name="name" type="text" class="text" value="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = name;}" >
+				<input id = "id" name="id" type="password" value="id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+                 <input type="checkbox" value="false" class="switch" id ="type" name="type" >
+                <input value={{key}} id="key" name="key" hidden></input>
+                <input value={{time}} id="time" name="time" hidden></input>
+
+				<div class="submit" ><input type="button" onclick="formSubmit()" value="Sign in" ></div>
+				<div class="clear"></div>
+				<div class="new">
+					<div class="clear"></div>
+				</div>
+			</form>
+		</div>
+	<!--start-copyright-->
+   		<div class="copy-right">
+				<p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href=""></a></p>
+		</div>
+	<!--//end-copyright-->
+</body>
+</html>

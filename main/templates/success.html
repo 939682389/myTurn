@@ -1,0 +1,134 @@
+<html lang="en" class="pixel-ratio-2 retina android android-6 android-6-0"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>出校凭证</title>
+    <link rel="stylesheet" href="https://students.demoo.com.cn/htmlstatic/plug/weuix/css/weui.css">
+    <link rel="stylesheet" href="https://students.demoo.com.cn/htmlstatic/plug/weuix/css/weuix.css">
+    <link rel="stylesheet" href="https://students.demoo.com.cn/htmlstatic/plug/weuix/css/common.css">
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/jquery2.1.4/jquery.min.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/jquery.validate.min.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/jquery.form.min.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/weuix/js/zepto.min.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/weuix/js/zepto.weui.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/weuix/js/php.js"></script>
+    <script src="https://students.demoo.com.cn/htmlstatic/plug/weuix/js/picker.city.js"></script>
+<style type="text/css">
+      @font-face {
+          font-family: "element-icons";
+          src: url('chrome-extension://moombeodfomdpjnpocobemoiaemednkg/fonts/element-icons.woff') format('woff'),
+          url('chrome-extension://moombeodfomdpjnpocobemoiaemednkg/fonts/element-icons.ttf ') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      }
+  </style></head>
+<body>
+<div id="popout"></div>
+<div id="mask"></div>
+<div id="navigation"></div>
+<div id="content">    <style>
+        .weui-pay-m::before {
+            content: none;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            $().ready(function () {
+                $(".tab-menu li").click(function () {
+                    //通过 .index()方法获取元素下标，从0开始，赋值给某个变量
+                    var _index = $(this).index();
+                    //让内容框的第 _index 个显示出来，其他的被隐藏
+                    $(".tab-box>div").eq(_index).show().siblings().hide();
+                    //改变选中时候的选项框的样式，移除其他几个选项的样式
+                    $(this).addClass("change").siblings().removeClass("change");
+                });
+            });
+
+
+        })
+
+    </script>
+    <div class="weui-tab" style="height:auto;">
+        <div>
+            <img style="width: 100%" src="https://hzdemoo.oss-cn-hangzhou.aliyuncs.com/zjgsu/1592876109703.png" alt="">
+        </div>
+        <div class="weui-tab__panel">
+            <div class="tab-menu">
+                <ul class="tab-wrap">
+                    <li class="tab-title change" style="border-right: 0;">
+                        <span class="tab-left">临时凭证</span>
+                    </li>
+                    <li class="tab-title">
+                        <span class="tab-right">固定凭证</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-box credentials-wrap">
+                <div class="temp-wrap credentials">
+                                                                        <div class="weui-pay-m">
+                                <div class="weui-pay-order">
+                                    <dl class="weui-pay-line">
+                                        <dd class="weui-pay-name"><h3>{{date}}--{{sx}}</h3></dd>
+                                        <dt class="weui-pay-label">使用人：</dt>
+                                        <dd class="weui-pay-e">{{name}}(计算机与信息工程学院)</dd>
+                                    </dl>
+                                    <dl class="weui-pay-line">
+                                        <dt class="weui-pay-label">审核时间：</dt>
+                                        <dd class="weui-pay-e">{{time1}}</dd>
+                                    </dl>
+                                                                            <dl class="weui-pay-line">
+                                            <dt class="weui-pay-label">出校时间：</dt>
+                                            <dd class="weui-pay-e">{{time2}}</dd>
+                                        </dl>
+                                                                                                                <dl class="weui-pay-line">
+                                            <dt class="weui-pay-label">返校时间：</dt>
+                                            <dd class="weui-pay-e">{{time3}}</dd>
+                                        </dl>
+                                                                                                                <dl class="weui-pay-line">
+                                            <dd class="weui-pay-e" style="color:orangered">学生已返校</dd>
+                                        </dl>
+
+
+                                </div>
+                            </div>
+                                                            </div>
+                <div class="regular-wrap credentials">
+                                                                                </div>
+            </div>
+        </div>
+        <div class="weui-tabbar tab-bottom">
+            <a href="/wap/plug/slak" class="weui-tabbar__item weui-bar__item_on">
+                <i class="icon icon-25 f27 weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">凭证</p>
+            </a>
+            <a href="/wap/plug/slak/apply" class="weui-tabbar__item">
+                <i class="icon icon-67 f27 weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">申请</p>
+            </a>
+            <a href="/wap/plug/slak/applylist" class="weui-tabbar__item">
+                <i class="icon icon-115 f27 weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">记录</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function openurl(id) {
+            $.confirm("确认到达?打开后凭证将在3分钟内失效", "您确定已到达门岗处?", function () {
+                window.location.href = "/wap/plug/slak/applycard/" + id;
+            }, function () {
+                //取消操作
+            });
+        }
+
+        function openurl2(id,type) {
+            $.confirm("确认到达?打开后凭证将在3分钟内失效", "您确定已到达门岗处?", function () {
+                window.location.href = "/wap/plug/slak/applycard2/" + id+'/'+type;
+            }, function () {
+
+            });
+        }
+    </script>
+
+</div>
+
+
+</body></html>

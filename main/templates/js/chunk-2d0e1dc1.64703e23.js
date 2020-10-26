@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e1dc1"],{"7bdd":function(n,t,e){"use strict";e.r(t);var c=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("d2-container-frame",{attrs:{src:"https://d2.pub/zh/doc/d2-admin"}})},d=[],r=e("2877"),a={},s=Object(r["a"])(a,c,d,!1,null,null,null);t["default"]=s.exports}}]);
