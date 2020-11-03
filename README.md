@@ -19,9 +19,6 @@
 ### 小程序二维码
 ![](https://github.com/939682389/gathering/blob/master/gh_791e99b5bf4a_258.jpg)
 
-### 后台界面
-![](https://github.com/939682389/gathering/blob/master/WX20201002-132441@2x.png)
-
 ## 后端介绍
 ### 技术栈
 - python
