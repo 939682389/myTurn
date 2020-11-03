@@ -2,7 +2,7 @@ import hashlib
 
 Mch_id = "1543505781"
 client_appid= "wx9343d3441e36b2cb"
-Mch_key="Kj19ftPp0qRz3BYc4mWMLhlOXr8ZdNgC"
+Mch_key=""
 import hashlib
 import datetime
 import xml.etree.ElementTree as ET

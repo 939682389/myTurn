@@ -7,7 +7,7 @@ from aliyunsdkcore.request import CommonRequest
 
 
 def get_code(phone, code):
-    client = AcsClient('LTAI4FspzfYr1G2X2uhTmTJD', 'ey4HP7d4aJPoG9VgbuspVxrgSNZY5z', 'cn-hangzhou')
+    client = AcsClient('', '', 'cn-hangzhou')
 
     request = CommonRequest()
     request.set_accept_format('json')

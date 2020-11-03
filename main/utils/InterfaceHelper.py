@@ -3,7 +3,7 @@ import requests
 import urllib.request
 
 appId = "wx4b9edd12cab20a6d"
-secret = "219c8a3cb759dcf722d8220c04815d87"
+secret = ""
 grant_type = "authorization_code"
 
 

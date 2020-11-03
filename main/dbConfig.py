@@ -1,8 +1,8 @@
-HOST = "118.25.71.143"
+HOST = ""
 PORT = "3306"
 DB = "gathering"
 USER = "root"
-PASS = "zhang990113."
+PASS = "."
 CHARSET = "utf8mb4"
 DB_URI = "mysql+pymysql://{}:{}@{}:{}/{}?charset={}".format(USER, PASS, HOST, PORT, DB, CHARSET)
 SQLALCHEMY_DATABASE_URI = DB_URI
