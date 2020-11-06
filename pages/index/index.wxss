@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+.right {
+  position: relative;
+  left: 150rpx;
+
+}
+
+.gruopinfo {
+  background-color: #d8d8d8;
+  width: 180rpx;
+  height: 100rpx;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -19,6 +35,7 @@
 .usermotto {
   margin-top: 200px;
 }
+
 .menu-item {
   width: 20%;
   padding: 5px;
@@ -29,8 +46,8 @@
 }
 
 .menu-name {
- position: relative;
- left: 80rpx;
+  position: relative;
+  left: 80rpx;
 }
 
 .menu-name2 {
@@ -39,30 +56,60 @@
 }
 
 .menu-img {
-  width: 100rpx;
-  height: 100rpx;
+  width: 90rpx;
+  height: 90rpx;
   padding: 10rpx;
   margin-left: 80rpx;
 }
 
 .menu {
-  display: flex; /*弹性布局*/
-  flex-wrap: wrap; /*允许换行*/
+  display: flex;
+  /*弹性布局*/
+  flex-wrap: wrap;
+  /*允许换行*/
   /* margin-left: 60rpx; */
 }
-.img{
-  height: 90rpx;
-  width: 90rpx;
+
+.img {
+  height: 50rpx;
+  width: 50rpx;
+  position: relative;
+  right: 10rpx;
 }
+
+.imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imglimit {
+  height: 280rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .icon2 {
   position: relative;
   width: 40rpx;
   height: 40rpx;
   right: -500rpx;
 }
-.text-right{
+
+.text-right {
   position: relative;
   left: 500rpx;
   bottom: 10rpx;
-  color:#1296db;
-} 
+  color: #1296db;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  /*允许换行*/
+  display: flex;
+  /*弹性布局*/
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+}

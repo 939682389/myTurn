@@ -1,42 +1,68 @@
 {
-
   "pages": [
     "pages/index/index",
     "pages/explore/explore",
     "pages/message/message",
     "pages/my/my",
-    "pages/logs/logs"
-  ],"window": {
+    "pages/logs/logs",
+
+    "pages/poprank/poprank",
+    "pages/onlinegame/onlinegame",
+    "pages/experience/experience",
+    "pages/videoenjoy/videoenjoy",
+    "pages/foodenjoy/foodenjoy",
+    "pages/activityDetail/activityDetail",
+    "pages/privateLetter/privateLetter",
+    
+    "pages/mycollect/mycollect",
+    "pages/updateinfo/updateinfo",
+    "pages/myinfo/myinfo",
+    "pages/creategroup/creategroup",
+    "pages/createactivity/createactivity",
+    "pages/groupdetail/groupdetail",
+    "pages/groupdetail2/groupdetail2",
+    "pages/choosetag/choosetag",
+    "pages/choosetagForAct/choosetagForAct",
+    "pages/groupdeMate/groupdeMate",
+    "pages/groupdAct/groupdAct",
+    "pages/groupdDiscuss/groupdDiscuss",
+    "pages/updategroup/updategroup",
+    "pages/updateActivity/updateActivity",
+    "pages/viewUserInfo/viewUserInfo"
+
+  ],
+  "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f2683e",
     "navigationBarTitleText": "Gathering",
-    "navigationBarTextStyle": "black"
+    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor": "#2db7f5",
+    "selectedColor": "#f2683e",
     "color": "#909090",
     "list": [
       {
         "text": "首页",
-        "iconPath": "images/tabbar/首页.png",
+        "iconPath": "images/tabbar/首页 - 未点击.png",
         "selectedIconPath": "images/tabbar/首页.png",
         "pagePath": "pages/index/index"
       },
       {
         "text": "探索",
-        "iconPath": "images/tabbar/探索.png",
+        "iconPath": "images/tabbar/探索 - 未点击.png",
         "selectedIconPath": "images/tabbar/探索.png",
         "pagePath": "pages/explore/explore"
       },
       {
         "text": "通知",
-        "iconPath": "images/tabbar/通知.png",
+        "iconPath": "images/tabbar/通知 - 未点击.png",
         "selectedIconPath": "images/tabbar/通知.png",
         "pagePath": "pages/message/message"
       },
       {
         "text": "我的",
-        "iconPath": "images/tabbar/我的.png",
+        "iconPath": "images/tabbar/我的 - 未点击.png",
         "selectedIconPath": "images/tabbar/我的.png",
         "pagePath": "pages/my/my"
       }

@@ -1,0 +1,30 @@
+/* pages/poprank/poprank.wxss */
+.index{
+  font-size: 80rpx;
+  position: relative;
+  top: 9rpx;
+  left: 24rpx;
+  /* flex-shrink:0; */
+}
+.num{
+  width: 170rpx;
+  height: 170rpx;
+}
+.left{
+  position: relative;
+  left: 100rpx;
+}
+.img{
+  height: 180rpx;
+  width: 250rpx;
+
+}
+.indexs{
+  border: 5px solid #d8d8d8 ;
+  border-radius: 50%;
+  height: 120rpx;
+  width: 120rpx;
+  position: relative;
+  top: 20rpx;
+  left: 20rpx;
+}

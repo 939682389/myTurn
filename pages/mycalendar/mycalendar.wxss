@@ -1,0 +1,8 @@
+.img{
+  height: 250rpx;
+  width: 300rpx;
+}
+.icon{
+  width: 250rpx;
+  height: 110rpx;
+}
