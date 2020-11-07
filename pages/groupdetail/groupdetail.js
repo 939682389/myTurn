@@ -12,6 +12,7 @@ Page({
     activityinfo: [], //活动
     talkinfo: [], //讨论
     imgurl: app.globalData.imgurl,
+    flag:false,
     test: [{
         avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83ervn5p4iczibJjA5ZVRLibE4VwU7IMK9pkuP068LaAcjj7dHJVpuicppFeudLAs3Sj78cgHKUp92lJjaA/132'
       },
@@ -20,7 +21,7 @@ Page({
       }
     ]
   },
-  toupdate() {
+  toupdate() {  
     wx.navigateTo({
       url: '/pages/updategroup/updategroup?id=' + this.data.groupnum,
     })
@@ -30,9 +31,9 @@ Page({
       url: '/pages/createactivity/createactivity?id=' + this.data.groupnum,
     })
   },
-  tojoindetail() {
+  tojoindetail(e) {
     wx.navigateTo({
-      url: '/pages/groupdeMate/groupdeMate?id=' + this.data.groupnum,
+      url: '/pages/groupdeMate/groupdeMate?id=' + this.data.groupnum+'&userid='+e.currentTarget.dataset.userid,
     })
   },
   /**
@@ -44,6 +45,7 @@ Page({
       mask: true //显示触摸蒙层  防止事件穿透触发
     });
     console.log('detail', options.id)
+    wx.setStorageSync('groupid', options.id)
     let ids = options.id
     var that = this
     //小组信息
@@ -53,9 +55,11 @@ Page({
     }
     util.get(url, data).then(function (res) {
       console.log(res.data)
+
       that.setData({
         info: res.data.data,
-        groupnum: ids
+        groupnum: ids,
+        flag:res.data.data.user.id==wx.getStorageSync('userId')?true:false
       })
     })
     //小组活动
@@ -124,10 +128,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.onLoad()
+    let t=wx.getStorageSync('groupid')
+    console.log('other page group id',t)
+    let tmp={}
+    tmp.id=t
+    this.onLoad(tmp)
   },
   onPullDownRefresh() {
-    this.onLoad()
+   // this.onLoad()
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -140,11 +148,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if (wx.getStorageSync('isCreateGroup')) {
+    if (wx.getStorageSync('isCreateGroup')||wx.getStorageSync('isUpdateGroup')) {
       wx.switchTab({
         url: '/pages/index/index',
       })
     }
+    wx.removeStorageSync('groupid')
+    wx.removeStorageSync('isUpdateGroup')
+    wx.removeStorageSync('isCreateGroup')
+
+    
   },
 
   /**

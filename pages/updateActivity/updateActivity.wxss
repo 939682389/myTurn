@@ -36,12 +36,15 @@
   text-align: center;
   font-weight: bold;
 }
-
+.align{
+  text-align: center;
+  align-items: center;
+}
 .checkbos {
-  transform: scale(0.6, 0.6);
-  /* padding: 20rpx; */
-  padding-right: 10rpx;
-  left: 15rpx;
+  /* transform: scale(0.66,0.66); */
+  transform: scale(.7);
+  position: relative;
+  left: 20rpx;
   /* top: 15rpx; */
 }
 .list-msg {

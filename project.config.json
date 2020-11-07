@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -36,7 +36,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.2",
-  "appid": "wxe01a44a6518bee89",
+  "appid": "wxe5bafea5a41e8e06",
   "projectname": "gatheringtest",
   "debugOptions": {
     "hidedInDevtools": []
@@ -46,176 +46,197 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "创建小组",
-					"pathName": "pages/creategroup/creategroup",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "人气总榜",
-					"pathName": "pages/poprank/poprank",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的日历",
-					"pathName": "pages/mycalendar/mycalendar",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的收藏",
-					"pathName": "pages/mycollect/mycollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "修改个人信息",
-					"pathName": "pages/updateinfo/updateinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的信息主页",
-					"pathName": "pages/myinfo/myinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "修改小组",
-					"pathName": "pages/updategroup/updategroup",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "小组详情页",
-					"pathName": "pages/groupdetail/groupdetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "小组详情页2 用户",
-					"pathName": "pages/groupdetail2/groupdetail2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "创建活动",
-					"pathName": "pages/createactivity/createactivity",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "探索",
-					"pathName": "pages/explore/explore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "标签选择",
-					"pathName": "pages/choosetag/choosetag",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "小组活动",
-					"pathName": "pages/groupdAct/groupdAct",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "小组成员",
-					"pathName": "pages/groupdeMate/groupdeMate",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "小组讨论",
-					"pathName": "pages/groupdDiscuss/groupdDiscuss",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "更新活动",
-					"pathName": "pages/updateActivity/updateActivity",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "创建活动的标签选择",
-					"pathName": "pages/choosetagForAct/choosetagForAct",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "查看用户信息",
-					"pathName": "pages/viewUserInfo/viewUserInfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "通知栏",
-					"pathName": "pages/message/message",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "私信列表",
-					"pathName": "pages/privateLetter/privateLetter",
-					"scene": null
-				}
-			]
-		}
-	}
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "condition": {
+      "search": {
+        "current": -1,
+        "list": []
+      },
+      "conversation": {
+        "current": -1,
+        "list": []
+      },
+      "plugin": {
+        "current": -1,
+        "list": []
+      },
+      "game": {
+        "currentL": -1,
+        "list": []
+      },
+      "gamePlugin": {
+        "current": -1,
+        "list": []
+      },
+      "miniprogram": {
+        "current": -1,
+        "list": [
+          {
+            "id": -1,
+            "name": "创建小组",
+            "pathName": "pages/creategroup/creategroup",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "人气总榜",
+            "pathName": "pages/poprank/poprank",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "我的",
+            "pathName": "pages/my/my",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "我的日历",
+            "pathName": "pages/mycalendar/mycalendar",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "我的收藏",
+            "pathName": "pages/mycollect/mycollect",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "修改个人信息",
+            "pathName": "pages/updateinfo/updateinfo",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "我的信息主页",
+            "pathName": "pages/myinfo/myinfo",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": 7,
+            "name": "修改小组",
+            "pathName": "pages/updategroup/updategroup",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "小组详情页",
+            "pathName": "pages/groupdetail/groupdetail",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "小组详情页2 用户",
+            "pathName": "pages/groupdetail2/groupdetail2",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": 10,
+            "name": "创建活动",
+            "pathName": "pages/createactivity/createactivity",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "探索",
+            "pathName": "pages/explore/explore",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "标签选择",
+            "pathName": "pages/choosetag/choosetag",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "小组活动",
+            "pathName": "pages/groupdAct/groupdAct",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "小组成员",
+            "pathName": "pages/groupdeMate/groupdeMate",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": 15,
+            "name": "小组讨论",
+            "pathName": "pages/groupdDiscuss/groupdDiscuss",
+            "query": "id=8",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "更新活动",
+            "pathName": "pages/updateActivity/updateActivity",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "创建活动的标签选择",
+            "pathName": "pages/choosetagForAct/choosetagForAct",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "查看用户信息",
+            "pathName": "pages/viewUserInfo/viewUserInfo",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "通知栏",
+            "pathName": "pages/message/message",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": -1,
+            "name": "私信列表",
+            "pathName": "pages/privateLetter/privateLetter",
+            "query": "",
+            "scene": null
+          },
+          {
+            "id": 21,
+            "name": "详细聊天",
+            "pathName": "pages/userTalk/userTalk",
+            "query": "id=2",
+            "scene": null
+          },
+          {
+            "id": 22,
+            "name": "/userTalk2",
+            "pathName": "pages/userTalk2/userTalk2",
+            "query": "id=2",
+            "scene": null
+          }
+        ]
+      }
+    }
+  }
 }

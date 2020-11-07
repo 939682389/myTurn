@@ -13,7 +13,8 @@ Page({
     area: '',
     num: 0,
     question: '',
-    imgurl: app.globalData.imgurl
+    imgurl: app.globalData.imgurl,
+    array:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
   },
   getname(e) {
     let t = 'info.name'
@@ -23,6 +24,13 @@ Page({
   },
   getnum(e) {
     let t = 'info.number'
+    this.setData({
+      [t]: parseInt(e.detail.value)+1
+    })
+  },
+  getann(e)
+  {
+    let t = 'info.announcement'
     this.setData({
       [t]: e.detail.value
     })
@@ -88,11 +96,17 @@ Page({
     })
   },
   commit(e) {
+    var that=this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true //显示触摸蒙层  防止事件穿透触发
+    });
     let url = app.globalData.URL + '/group';
     var data = {
       id: this.data.groupnum,
       name: this.data.info.name,
       introduction: this.data.info.introduction,
+      announcement:this.data.info.announcement,
       number: this.data.info.number,
       question: this.data.info.question,
       image: this.data.info.image
@@ -104,9 +118,11 @@ Page({
           title: '提交成功',
           duration: 2000,
           success: function () {
+            wx.setStorageSync('isUpdateGroup', '1')
+            console.log('modify success')
             setTimeout(function () {
-              wx.reLaunch({
-                url: '/pages/index/index',
+              wx.navigateTo({
+                url: '/pages/groupdetail/groupdetail?id='+that.data.groupnum,
               })
             }, 2000);
           }
@@ -119,6 +135,7 @@ Page({
           duration: 2000
         })
       }
+      wx.hideLoading()
     }).catch(function (res) {
       console.log(res)
       wx.showToast({

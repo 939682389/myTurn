@@ -8,6 +8,7 @@ Page({
   data: {
     imgList: [],
     type:0,
+    date:'',
     imgurl: '',
     id: '',
     name: '',
@@ -67,7 +68,12 @@ Page({
       select: false
     })
   },
-
+  bindDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   commit(e) {
     // console.log(this.data.imgurl.data.url)
     var that=this
@@ -76,7 +82,7 @@ Page({
       type: this.data.type,
       group_id: this.data.groupnum,
       title: this.data.name,
-      time: this.data.time,
+      time: this.data.date,
       location:this.data.location,
       summarize: this.data.area,
       number: this.data.num,
@@ -104,7 +110,7 @@ Page({
       } else {
         wx.showToast({
           title: '提交失败',
-          image: '/img/fail.png',
+          image: '/images/fail.png',
           icon: 'success',
           duration: 2000
         })
@@ -113,6 +119,7 @@ Page({
       console.log(res)
       wx.showToast({
         title: '提交失败！',
+        image: '/images/fail.png',
         icon: 'success',
         duration: 2000
       })

@@ -24,6 +24,12 @@ Page({
       
     }]
   },
+  toActivity(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '/pages/activityDetail/activityDetail?id='+e.currentTarget.dataset.id,
+    })
+  },
   cutcollect(e){
     console.log(this.data.chooseindex)
     var that = this
@@ -62,6 +68,10 @@ Page({
    */
   onLoad: function (options) {
     let that=this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true //显示触摸蒙层  防止事件穿透触发
+    });
     //获取我的收藏
     let url = app.globalData.URL + '/group/collection/list';
     var data = {
@@ -69,10 +79,18 @@ Page({
       page: '1',
     }
     util.get(url, data).then(function (res) {
+      let obj=res.data.data
+      console.log(obj)
+      for(let i of obj)
+      {
+        i.activity.time= i.activity.time.substring(0, 10)
+      }
       that.setData({
-        collect: res.data.data
+        collect:obj
       })
+      wx.hideLoading()
     })
+
   },
 
   /**

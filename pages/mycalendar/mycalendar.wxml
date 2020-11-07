@@ -5,7 +5,9 @@
 		</view>
 	</view>
 </scroll-view> -->
-<view class="flex">
+
+<!-- 7.9 fixed
+	<view class="flex bg-white">
 	<image src="/images/calendar/日历 全部（150x35px）.png" wx:if="{{TabCur==0}}" class="icon padding" bindtap="choose" data-id="0"></image>
 	<image src="/images/calendar/日历 全部 - 未点击（150x35px）.png" wx:else class="icon padding" bindtap="choose" data-id="0"></image>
 
@@ -14,11 +16,31 @@
 
 	<image src="/images/calendar/日历 已过期（150x35px）.png" wx:if="{{TabCur==2}}" class="icon padding" bindtap="choose" data-id="2"></image>
 	<image src="/images/calendar/日历 已过期 - 未点击（150x35px）.png" wx:else class="icon padding" bindtap="choose" data-id="2"></image>
+</view> -->
 
+<view class='zg bg-white padding'>
+	<view class="desx zg_txt" bindtap="choose" data-id="0">
+		<view class='text-center text-bold zi' style="position: relative;right: 10rpx;">全部</view>
+		<view class="line2" wx:if="{{TabCur==0}}"></view>
+		<view class="line" wx:else ></view>
+	</view>
+		<view class="desx zg_txt" bindtap="choose" data-id="1">
+		<view class=' text-center text-bold zi'>即将到来</view>
+			<view class="line2" wx:if="{{TabCur==1}}"></view>
+		<view class="line" wx:else ></view>
+	</view>
+		<view class="desx zg_txt" bindtap="choose" data-id="2">
+		<view class=' text-center text-bold zi' style="position: relative;left: 6rpx;">已过期</view>
+		<view class="line2" style="position: relative;left: 25rpx;" wx:if="{{TabCur==2}}"></view>
+		<view class="line" style="position: relative;left: 25rpx;" wx:else ></view>
+	</view>
+	<!-- <view class='zg_txt text-center text-bold'>即将到来</view>
+	<view class='zg_txt text-center text-bold'>已过期</view> -->
 </view>
+
 <block wx:if="{{TabCur==0}}">
-	<view class="flex bg-white" wx:for="{{allactivity}}" bindtap="toactdetail" data-id="{{item.id}}">
-		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFit"></image>
+	<view class="flex " wx:for="{{allactivity}}" bindtap="toactdetail" data-id="{{item.id}}">
+		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFill"></image>
 		<view class="desc padding-sm">
 			<view class="padding-sm text-bold">{{item.title}}</view>
 			<view class="padding-sm">{{item.name}}</view>
@@ -27,8 +49,8 @@
 	</view>
 </block>
 <block wx:if="{{TabCur==1}}">
-	<view class="flex bg-white" wx:for="{{upcommingActivity}}" bindtap="toactdetail" data-id="{{item.id}}">
-		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFit"></image>
+	<view class="flex " wx:for="{{upcommingActivity}}" bindtap="toactdetail" data-id="{{item.id}}">
+		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFill"></image>
 		<view class="desc padding-sm">
 			<view class="padding-sm text-bold">{{item.title}}</view>
 			<view class="padding-sm">{{item.name}}</view>
@@ -37,8 +59,8 @@
 	</view>
 </block>
 <block wx:if="{{TabCur==2}}">
-	<view class="flex bg-white" wx:for="{{expiredActivity}}" bindtap="toactdetail" data-id="{{item.id}}">
-		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFit"></image>
+	<view class="flex " wx:for="{{expiredActivity}}" bindtap="toactdetail" data-id="{{item.id}}">
+		<image src="{{imgurl}}{{item.image}}" class="img padding" mode="aspectFill"></image>
 		<view class="desc padding-sm">
 			<view class="padding-sm text-bold">{{item.title}}</view>
 			<view class="padding-sm">{{item.name}}</view>

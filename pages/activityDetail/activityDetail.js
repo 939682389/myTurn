@@ -13,7 +13,21 @@ Page({
     isjoin: false,
     iscollect: false,
   },
-
+  toGroupDetail(e) {
+    if (wx.getStorageSync('userId') == this.data.groupinfo.user_id)
+      wx.navigateTo({
+        url: '/pages/groupdetail/groupdetail?id=' + this.data.groupinfo.id,
+      })
+    else
+      wx.navigateTo({
+        url: '/pages/groupdetail2/groupdetail2?id=' + this.data.groupinfo.id,
+      })
+  },
+  toUserList(){
+    wx.navigateTo({
+      url: '/pages/activityMate/activityMate?id='+this.data.actid,
+    })
+  },
   onLoad: function (options) {
     var that = this
     wx.showLoading({
@@ -21,6 +35,9 @@ Page({
       mask: true //显示触摸蒙层  防止事件穿透触发
     });
     console.log(options.id)
+    this.setData({
+      actid:options.id
+    })
     //获取活动情况
     let url = app.globalData.URL + '/group/activity';
     var data = {
@@ -88,13 +105,13 @@ Page({
       activity_id: options.id
     }
     util.get(url, data).then(function (res) {
-      console.log('isjoin', res.data.data)
+      console.log('isjoin', res.data)
       that.setData({
         isjoin: res.data.data
       })
     })
     //获取活动用户列表
-    url = app.globalData.URL + '/group/activity/join/list'
+    url = app.globalData.URL + '/group/activity/join/user/list'
     data = {
       limit: 10,
       page: 1,
@@ -107,7 +124,7 @@ Page({
       })
       wx.hideLoading()
     })
-    
+
   },
   toOtherAct(e) {
     wx.navigateTo({
@@ -121,28 +138,51 @@ Page({
   },
   tojoin(e) {
     var that = this
-    let url = app.globalData.URL + '/group/activity/join';
-    var data = {
-      activity_id: this.data.actinfo.id
-    }
-    util.post(url, data).then(function (res) {
-      console.log(res.data)
-      if (res.data.code == 200) {
-        wx.showToast({
-          title: '参加成功',
-          duration: 2000,
-          success: function () {
-            console.log('join success')
-            that.setData({
-              isjoin: true
-            })
-          }
-        })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true //显示触摸蒙层  防止事件穿透触发
+    });
+    if (app.globalData.nickName) {
+      let url = app.globalData.URL + '/group/activity/join';
+      var data = {
+        activity_id: this.data.actinfo.id
       }
+      util.post(url, data).then(function (res) {
+        console.log(res.data)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '您的申请已发送',
+            duration: 2000,
+            success: function () {
+              console.log('join success')
+              that.setData({
+                isjoin: true
+              })
+            }
+          })
+          wx.hideLoading()
+        }
+      })
+    }
+    else
+    {
+      wx.switchTab({
+        url: '/pages/my/my',
+      })
+    }
+  },
+
+  toUserDetail(e){
+    wx.navigateTo({
+      url: '/pages/viewUserInfo/viewUserInfo?id=' + e.currentTarget.dataset.id,
     })
   },
   tocollect(e) {
     var that = this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true //显示触摸蒙层  防止事件穿透触发
+    });
     let url = app.globalData.URL + '/group/collection';
     var data = {
       activity_id: this.data.actinfo.id
@@ -160,11 +200,16 @@ Page({
             })
           }
         })
+        wx.hideLoading()
       }
     })
   },
   cancelcollect() {
     var that = this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true //显示触摸蒙层  防止事件穿透触发
+    });
     let url = app.globalData.URL + '/group/collection';
     var data = {
       id: this.data.actinfo.id
@@ -182,14 +227,18 @@ Page({
             })
           }
         })
+        wx.hideLoading()
       }
     })
   },
   quitact() {
     var that = this
-
+    // wx.showLoading({
+    //   title: '加载中...',
+    //   mask: true //显示触摸蒙层  防止事件穿透触发
+    // });
     wx.showModal({
-      title: '退出该小组',
+      title: '退出该活动',
       // content: '确定要删除这张照片吗',
       cancelText: '取消',
       confirmText: '确认',
@@ -213,6 +262,7 @@ Page({
                   })
                 }
               })
+              wx.hideLoading()
             }
           })
         }
@@ -245,7 +295,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.removeStorageSync('isCreateGroup')
   },
 
   /**

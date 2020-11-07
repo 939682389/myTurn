@@ -107,17 +107,17 @@ Page({
     //小组信息
     let tmpuserid=options.userid
     console.log('tmpuserid',tmpuserid)
-    let ableFlag=wx.getStorageSync('userId')==options.userid?'1':'0'
-    let url = app.globalData.URL + '/group/join/user/list';
+    let url = app.globalData.URL + '/group/activity/join/user/list';
     var data = {
-      group_id: options.id
+      limit: 10,
+      page: 1,
+      activity_id: options.id
     }
     util.get(url, data).then(function (res) {
       console.log(res.data)
       that.setData({
         joininfo: res.data.data,
         groupnum: options.id,
-        flag:ableFlag
       })
     })
   },

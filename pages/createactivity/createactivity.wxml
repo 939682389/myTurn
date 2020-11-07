@@ -1,46 +1,54 @@
-
 <form>
 	<view class="flex-sub text-left bg-white">
 		<view class="solid-bottom text-lg padding">
 			<text class="text-black text-bold" >活动类别选择：</text>
 		</view>
 	</view>
-  <view class='list-msg'>
-    <view class='list-msg2' bindtap='bindShowMsg'>
-        <text class=" ">{{tihuoWay}}</text>
-        <image style='height:20rpx;width:20rpx;' src='/images/down.png'></image>
-    </view>
-    <cover-view class="select_box" wx:if="{{select}}">
-        <cover-view class="select_one" bindtap="mySelect" data-name="线上游戏" data-id="0">线上游戏</cover-view>
-        <cover-view class="select_one" bindtap="mySelect" data-name="经验分享" data-id="1">经验分享</cover-view>
-        <cover-view class="select_one" bindtap="mySelect" data-name="影视鉴赏" data-id="2">影视鉴赏</cover-view>
-        <cover-view class="select_one" bindtap="mySelect" data-name="美食探店" data-id="3">美食探店</cover-view>
-    </cover-view>
-  </view>
-<!-- <view style="position:relative;top:40rpx"> -->
-	<view class="flex-sub text-left bg-white" >
+	<view class='list-msg'>
+		<view class='list-msg2' bindtap='bindShowMsg'>
+			<text class=" ">{{tihuoWay}}</text>
+			<image style='height:20rpx;width:20rpx;' src='/images/down.png'></image>
+		</view>
+		<cover-view class="select_box" wx:if="{{select}}">
+			<cover-view class="select_one" bindtap="mySelect" data-name="线上游戏" data-id="0">线上游戏</cover-view>
+			<cover-view class="select_one" bindtap="mySelect" data-name="经验分享" data-id="1">经验分享</cover-view>
+			<cover-view class="select_one" bindtap="mySelect" data-name="影视鉴赏" data-id="2">影视鉴赏</cover-view>
+			<cover-view class="select_one" bindtap="mySelect" data-name="美食探店" data-id="3">美食探店</cover-view>
+		</cover-view>
+	</view>
+	<!-- <view style="position:relative;top:40rpx"> -->
+	<view class="flex-sub text-left bg-white">
 		<view class="solid-bottom text-lg padding">
 			<text class="text-black text-bold" >活动标题：</text>
 		</view>
 	</view>
 	<view class="backcolor cu-form-group input">
-		<input placeholder="{{id}}" class="" bindinput="getname" placeholder-style="color:white" placeholder="输入内容（10字以内）"></input>
+		<input placeholder="{{id}}" class="" bindinput="getname" placeholder-style="color:white" placeholder="输入内容"></input>
 	</view>
 	<view class="flex-sub text-left bg-white">
 		<view class="solid-bottom text-lg padding">
 			<text class="text-black text-bold" >活动时间：</text>
 		</view>
 	</view>
-	<view class="backcolor cu-form-group input">
+
+<view class="backcolor cu-form-group input">
+  <picker mode="date" value="{{date}}" start="2020-07-01" end="2030-09-01" bindchange="bindDateChange">
+    <view class=" text-left text-white ">
+      {{date==''?'选择日期':date}}
+    </view>
+  </picker>
+</view>
+
+	<!-- <view class="backcolor cu-form-group input">
 		<input placeholder="{{id}}" class="" bindinput="gettime" placeholder-style="color:white" placeholder="输入内容(xxxx-xx-xx)"></input>
-	</view>
+	</view> -->
 	<view class="flex-sub text-left bg-white">
 		<view class="solid-bottom text-lg padding">
 			<text class="text-black text-bold" >活动地点/形式：</text>
 		</view>
 	</view>
 	<view class="backcolor cu-form-group input">
-		<input placeholder="{{id}}" class="" bindinput="getlocation" type="number" placeholder-style="color:white" placeholder="输入内容（10字以内）"></input>
+		<input placeholder="{{id}}" class="" bindinput="getlocation" placeholder-style="color:white" placeholder="输入内容"></input>
 	</view>
 	<view class="flex-sub text-left">
 		<view class="solid-bottom text-lg padding">
@@ -48,7 +56,7 @@
 		</view>
 	</view>
 	<view class="cu-form-group area">
-		<textarea maxlength="-1" placeholder-style="color:white" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="输入内容（100字以内）"></textarea>
+		<textarea maxlength="-1" placeholder-style="color:white" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="输入内容"></textarea>
 	</view>
 
 	<view class="flex-sub text-left bg-white">
@@ -57,7 +65,7 @@
 		</view>
 	</view>
 	<view class="backcolor cu-form-group input">
-		<input placeholder="{{id}}" class="" bindinput="getnum" placeholder-style="color:white" placeholder="输入内容（一个小组的人数上限为50人）"></input>
+		<input placeholder="{{id}}" class="" bindinput="getnum" type="number" placeholder-style="color:white" placeholder="输入内容"></input>
 	</view>
 	<view class="cu-bar bg-white margin-top">
 		<view class="action">
@@ -83,12 +91,12 @@
 	<view class="flex">
 		<view class="padding text-lg" style="backgroud-color:blue">活动标签选择：</view>
 		<view wx:for="{{tagchoose}}" wx:if="{{tagchoose}}" class="menu-name padding-xs text-blue" wx:if="{{index<3}}">{{item}}</view>
-		<image src="/images/array.png" class="icon"  bindtap="totag"></image>
+		<image src="/images/array.png" class="icon" bindtap="totag"></image>
 	</view>
 	<view class="padding text-lg">活动提醒</view>
 	<view class="flex">
 		<checkbox class="checkbos" bindtap="check" checked="{{check}}"></checkbox>
-		<view class="title padding-xs">活动开始前给参与者发送提醒</view>
+		<view class="title padding">活动开始前给参与者发送提醒</view>
 	</view>
 </form>
 <view class="flex padding">

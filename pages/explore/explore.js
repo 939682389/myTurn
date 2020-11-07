@@ -24,6 +24,11 @@ Page({
       url: '/pages/activityDetail/activityDetail?id='+e.currentTarget.dataset.id,
     })
   },
+  togroup(e){
+    wx.navigateTo({
+      url: '/pages/groupdetail2/groupdetail2?id='+e.currentTarget.dataset.id,
+    })
+  },
   //搜索刷新 或 选择刷新
   flesh() {
     var that = this
@@ -40,6 +45,32 @@ Page({
         issearch:true
       })
     })
+
+    url = app.globalData.URL + '/group/list';
+    data = {
+      keyword: that.data.keyword,
+      limit: that.data.fleshlimit,
+      page: that.data.currentpage
+    }
+    util.get(url, data).then(function (res) {
+      console.log('flesh', res.data)
+      let tmp = res.data.data
+      for (let i of tmp) {
+        if (i.announcement != null) {
+          if (i.announcement.length > 12)
+            i.announcement = i.announcement.substring(0, 12) + '...'
+        } else {
+          i.announcement = '暂无'
+        }
+
+      }
+
+      that.setData({
+        infogroup: tmp,
+        issearch:true
+      })
+    })
+
   },
   flesh2() {
     console.log('flesh2')

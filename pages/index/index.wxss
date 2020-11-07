@@ -12,15 +12,27 @@
 }
 
 .gruopinfo {
-  background-color: #d8d8d8;
-  width: 180rpx;
+  /* background-color: #d8d8d8; */
+  width: 180rpx; 
   height: 100rpx;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+.paddingfirst{
+  padding: 30rpx 30rpx 0rpx 30rpx;
+}
+.titlepadding{
+  padding-left: 30rpx;
+  padding-top: 10rpx;
+}
+.paddingsub{
+ padding-top: 5rpx;
+ padding-right: 20rpx;
+ padding-left: 30rpx;
+ padding-bottom: 40rpx;
+}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -57,9 +69,9 @@
 
 .menu-img {
   width: 90rpx;
-  height: 90rpx;
-  padding: 10rpx;
-  margin-left: 80rpx;
+  height: 80rpx;
+  padding: 6rpx;
+  margin-left: 95rpx;
 }
 
 .menu {
@@ -75,6 +87,7 @@
   width: 50rpx;
   position: relative;
   right: 10rpx;
+  top: 30rpx;
 }
 
 .imgs {
@@ -84,10 +97,11 @@
 }
 
 .imglimit {
-  height: 280rpx;
+  height: 290rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .icon2 {
@@ -112,4 +126,14 @@
   flex-direction: row;
   align-items: center;
   /* justify-content: center; */
+}
+scroll-view {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.item-content {
+  /* width: 40%; */
+  display: inline-block;
+  text-align: center;
 }

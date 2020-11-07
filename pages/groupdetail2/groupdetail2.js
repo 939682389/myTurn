@@ -2,6 +2,7 @@ const app = getApp();
 var util = require("../../script/utils.js");
 Page({
   data: {
+    hiddenmodalput2: true,
     isjoin: false,
     ans: '',
     hiddenmodalput: true,
@@ -12,6 +13,7 @@ Page({
     activityinfo: [], //活动
     talkinfo: [], //讨论
     imgurl: app.globalData.imgurl,
+    flag:false,
     test: [{
         avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83ervn5p4iczibJjA5ZVRLibE4VwU7IMK9pkuP068LaAcjj7dHJVpuicppFeudLAs3Sj78cgHKUp92lJjaA/132'
       },
@@ -21,50 +23,71 @@ Page({
     ]
   },
   //点击按钮痰喘指定的hiddenmodalput弹出框  
-  modalinput: function () {
+  modalinput2: function () {
+
+    if(this.data.info.user.private_status==0)
+    {
+      wx.showToast({
+        icon: 'none',
+        title: '对方设置拒绝陌生人私信',
+      })
+    }
+    else
     this.setData({
-      hiddenmodalput: !this.data.hiddenmodalput
+      hiddenmodalput2: !this.data.hiddenmodalput2
     })
   },
   //取消按钮  
-  cancel: function () {
+  cancel2: function () {
     this.setData({
-      hiddenmodalput: true
+      hiddenmodalput2: true
     });
-
   },
-  //确认  
-  confirm: function () {
-    var that=this
+  //确认  加入小组
+  confirm2: function () {
+    var that = this
     this.setData({
       hiddenmodalput: true
     })
     let url = app.globalData.URL + '/group/join';
     var data = {
-      answer:this.data.ans,
-      group_id:this.data.groupnum
+      answer: this.data.ans,
+      group_id: this.data.groupnum
     }
     util.post(url, data).then(function (res) {
       console.log(res.data)
       if (res.data.code == 200) {
-        that.setData({
-          isjoin:true
-        })
+        // that.setData({
+        //   isjoin: true
+        // })
         console.log('join success')
-      } 
+      }
     })
     wx.showModal({
-      title: '你的申请已发送',
+      title: '发送成功',
       // content: '这是一个模态弹窗',
       showCancel: false,
       success(res) {
+        that.setData({
+          hiddenmodalput: true,
+          ans: ''
+        })
         if (res.confirm) {
           console.log('用户点击确定')
         }
       }
     })
   },
+  test() {
+    console.log('test')
+  },
+  getmessage(e) {
+    this.setData({
+      message: e.detail.value
+    })
+  },
   quitgroup(e) {
+    var that=this
     wx.showModal({
       title: '退出该小组',
       // content: '确定要删除这张照片吗',
@@ -81,7 +104,7 @@ Page({
             console.log(res.data)
             if (res.data.code == 200) {
               wx.showToast({
-                title: '删除',
+                title: '退出成功！',
                 duration: 2000,
                 success: function () {
                   // setTimeout(function () {
@@ -89,6 +112,9 @@ Page({
                   //     url: '/pages/index/index',
                   //   })
                   // }, 2000);
+                  that.setData({
+                    isjoin:false
+                  })
                   console.log('quit group success')
                 }
               })
@@ -125,25 +151,67 @@ Page({
 
   tojoin() {
     var that = this
-    wx.showModal({
-      title: '申请加入该小组',
-      // content: '确定要删除这张照片吗',
-      cancelText: '取消',
-      confirmText: '确认',
-      success: res => {
-        if (res.confirm) {
-          console.log('first confirm')
-          that.setData({
-            hiddenmodalput: !this.data.hiddenmodalput
-          })
+    if (app.globalData.nickName) {
+      wx.showModal({
+        title: '申请加入该小组',
+        // content: '确定要删除这张照片吗',
+        cancelText: '取消',
+        confirmText: '确认',
+        success: res => {
+          if (res.confirm) {
+            console.log('first confirm')
+            that.setData({
+              hiddenmodalput: !this.data.hiddenmodalput
+            })
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.switchTab({
+        url: '/pages/my/my',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
 
+  //点击按钮弹窗指定的hiddenmodalput弹出框  
+  modalinput: function () {
+    this.setData({
+      hiddenmodalput: !this.data.hiddenmodalput
+    })
+  },
+  //取消按钮  
+  cancel: function () {
+    this.setData({
+      hiddenmodalput: true
+    });
+  },
+  //确认  
+  confirm: function () {
+    var that = this
+    
+    let url = app.globalData.URL + '/inform/message';
+    var data = {
+      content: this.data.message,
+      to_id: this.data.info.user.id,
+      from_id: wx.getStorageSync('userId')
+    }
+    util.post(url, data).then(function (res) {
+      console.log(res.data)
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: '私信成功',
+          duration: 2000,
+        })
+        that.setData({
+          hiddenmodalput2: true,
+          message:''
+        })
+      }
+    })
+  },
   toupdate() {
     wx.navigateTo({
       url: '/pages/updategroup/updategroup?id=' + this.data.groupnum,
@@ -154,9 +222,9 @@ Page({
       url: '/pages/createactivity/createactivity?id=' + this.data.groupnum,
     })
   },
-  tojoindetail() {
+  tojoindetail(e) {
     wx.navigateTo({
-      url: '/pages/groupdeMate/groupdeMate?id=' + this.data.groupnum,
+      url: '/pages/groupdeMate/groupdeMate?id=' + this.data.groupnum + '&userid=' + e.currentTarget.dataset.userid,
     })
   },
   /**
@@ -168,6 +236,7 @@ Page({
       title: '加载中...',
       mask: true //显示触摸蒙层  防止事件穿透触发
     });
+    wx.setStorageSync('groupid', options.id)
     var that = this
     //小组信息
     let url = app.globalData.URL + '/group';
@@ -178,7 +247,8 @@ Page({
       console.log(res.data)
       that.setData({
         info: res.data.data,
-        groupnum: options.id
+        groupnum: options.id,
+        flag:res.data.data.user.id==wx.getStorageSync('userId')?true:false
       })
     })
     //小组活动
@@ -219,26 +289,38 @@ Page({
         joinnum: res.data.data.length
       })
     })
+     //判断用户在小组中的状态
+     url = app.globalData.URL + '/group/join';
+     data = {
+      group_id:options.id,
+      user_id:wx.getStorageSync('userId')
+     }
+     util.get(url, data).then(function (res) {
+       console.log('用户在小组中的状态',res.data.data)
+        that.setData({
+          isjoin:res.data.data.audit_status==1?true:false
+        })
+     })
     //获取参加小组
     url = app.globalData.URL + '/group/join/list';
     data = {
-      audit_status:0,
-      limit:6,
-      page:1,
-      user_id:wx.getStorageSync('userId')
+      audit_status: 0,
+      limit: 6,
+      page: 1,
+      user_id: wx.getStorageSync('userId')
     }
     util.get(url, data).then(function (res) {
       console.log(res.data)
       that.setData({
-        joininfo: res.data.data,
+        joininfoUser: res.data.data,
       })
       wx.hideLoading()
     })
   },
-  toactdetail(e)
-  {
+
+  toactdetail(e) {
     wx.navigateTo({
-      url: '/pages/activityDetail/activityDetail?id='+e.currentTarget.dataset.id,
+      url: '/pages/activityDetail/activityDetail?id=' + e.currentTarget.dataset.id,
     })
   },
   toallact(e) {
@@ -265,7 +347,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let t = wx.getStorageSync('groupid')
+    console.log('other page group id', t)
+    let tmp = {}
+    tmp.id = t
+    this.onLoad(tmp)
   },
 
   /**
@@ -279,7 +365,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    if (wx.getStorageSync('isCreateGroup')) {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
+    wx.removeStorageSync('groupid')
   },
 
   /**
