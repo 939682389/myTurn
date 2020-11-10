@@ -36,6 +36,7 @@ Page({
     var that = this
     let url = app.globalData.URL + '/group/activity/list';
     let data = {
+      isExpired:'0',
       order: that.data.order,
       type: that.data.type,
       limit: that.data.fleshlimit,
@@ -45,6 +46,8 @@ Page({
       let test = res.data.data
       test.forEach((item) => {
         //这里需要截取的内容
+        if(item.title.length>8)
+        item.title=item.title.substring(0,8)+"..."
         item.time = item.time.substring(0, 10)
       })
       that.setData({
@@ -58,6 +61,7 @@ Page({
     var that = this
     let url = app.globalData.URL + '/group/activity/list';
     let data = {
+      isExpired:'0',
       keyword: that.data.keyword,
       order: that.data.order,
       type: that.data.type,
@@ -69,6 +73,8 @@ Page({
       let test = res.data.data
       test.forEach((item) => {
         //这里需要截取的内容
+        if(item.title.length>8)
+        item.title=item.title.substring(0,8)+"..."
         item.time = item.time.substring(0, 10)
       })
       that.setData({
@@ -85,6 +91,7 @@ Page({
       console.log("上拉刷新")
       let url = app.globalData.URL + '/group/activity/list';
       let data = {
+        isExpired:'0',
         order: that.data.order,
         type: that.data.type,
         limit: that.data.fleshlimit,
