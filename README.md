@@ -15,10 +15,6 @@
 - 用户聊天
 - 消息通知
 
-## 小程序介绍
-### 功能界面
-![](https://github.com/939682389/gathering/blob/master/WX20201002-132028@2x.png)
-
 ## 后端介绍
 ### 技术栈
 - python
