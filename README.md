@@ -21,3 +21,5 @@
 - flask
 - SQLAlchemy
 - RESTPlus
+
+## 前端与项目相关文件见gatheringtest分支
