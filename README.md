@@ -1,6 +1,9 @@
 # Gathering
 一款线上活动组团微信小程序
 
+## 接口文档
+- http://gathering.cooltian.cn/v1/
+
 ## 运行环境
 - uWSGI、Nginx
 - MySQL >=5.1
